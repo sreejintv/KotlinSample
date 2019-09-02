@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="ae.farabi.test.most_popular.details.DetailsViewModel" />
+
+    </data>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+        <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                app:loadImage="@{viewModel.mediaImage()}"
+                android:layout_gravity="center_horizontal"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/text"
+                android:textStyle="bold"
+                tools:text="slflsdfjld"
+                android:text="@{viewModel.news.title}" />
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/text"
+                tools:text="slflsdfjld"
+                android:text="@{viewModel.news.subsection}" />
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/text"
+                android:text="@{viewModel.news.source}" />
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/text"
+                android:text="@{viewModel.news.updated}" />
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/text"
+                android:text="@{viewModel.news.abstract}" />
+
+    </LinearLayout>
+</layout>

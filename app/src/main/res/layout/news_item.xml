@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="ae.farabi.test.MostPopularItemViewModel" />
+
+
+        <variable
+                name="listener"
+                type="ae.farabi.test.most_popular.OnNewsItemClickListener" />
+    </data>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="9"
+                    android:onClick="@{() -> listener.onItemClick(viewModel.data)}">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/image"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        app:civ_border_color="#7C7474"
+                        app:civ_border_width="2dp"
+                        app:loadImage="@{viewModel.mediaThumbnail()}" />
+
+                <TextView
+                        android:id="@+id/title"
+                        style="@style/text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_toEndOf="@+id/image"
+                        android:layout_toRightOf="@+id/image"
+                        android:maxLines="2"
+                        android:text="@{viewModel.data.title}"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        tools:text="fsdfsdfsfd" />
+
+                <TextView
+                        android:id="@+id/author"
+                        style="@style/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/title"
+                        android:layout_toEndOf="@+id/image"
+                        android:layout_toRightOf="@+id/image"
+                        android:text="@{viewModel.data.subsection}"
+                        tools:text="hello author" />
+
+                <TextView
+                        android:id="@+id/source"
+                        style="@style/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/author"
+                        android:layout_toEndOf="@+id/image"
+                        android:layout_toRightOf="@+id/image"
+                        android:text="@{viewModel.data.source}"
+                        android:textAllCaps="true"
+                        tools:text="hello author" />
+
+                <TextView
+                        android:id="@+id/date"
+                        style="@style/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/author"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:drawableStart="@drawable/ic_date"
+                        android:drawableLeft="@drawable/ic_date"
+                        android:text="@{viewModel.data.published_date}"
+                        tools:text="hello author" />
+
+            </RelativeLayout>
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_next" />
+
+
+        </LinearLayout>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+            android:background="@color/border"/>
+    </RelativeLayout>
+
+
+</layout>
