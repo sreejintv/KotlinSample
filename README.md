@@ -1,4 +1,4 @@
-# Kotlin MAchine Test
+# Kotlin Machine Test
 This an Android application project having master-details flow of news listing and details using nytimes api. 
 User interface for this project is very conventional.
 
