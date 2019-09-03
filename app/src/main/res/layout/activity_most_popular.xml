@@ -7,7 +7,7 @@
 
         <variable
                 name="viewModel"
-                type="ae.farabi.test.MostPopularActivityViewModel" />
+                type="ae.farabi.test.most_popular.MostPopularActivityViewModel" />
 
     </data>
 

@@ -7,12 +7,12 @@
 
         <variable
                 name="viewModel"
-                type="ae.farabi.test.MostPopularItemViewModel" />
+                type="ae.farabi.test.most_popular.MostPopularItemViewModel" />
 
 
         <variable
                 name="listener"
-                type="ae.farabi.test.most_popular.OnNewsItemClickListener" />
+                type="ae.farabi.test.utils.OnNewsItemClickListener" />
     </data>
 
     <RelativeLayout

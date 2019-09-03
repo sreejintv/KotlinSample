@@ -1,4 +1,4 @@
-package ae.farabi.test.most_popular
+package ae.farabi.test.utils
 
 import ae.farabi.test.model.Content
 

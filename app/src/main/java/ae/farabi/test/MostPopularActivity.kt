@@ -2,6 +2,7 @@ package ae.farabi.test
 
 import ae.farabi.test.databinding.ActivityMostPopularBinding
 import ae.farabi.test.model.Content
+import ae.farabi.test.most_popular.MostPopularActivityViewModel
 import ae.farabi.test.most_popular.details.DetailsFragment
 import ae.farabi.test.utils.Constants.DETAIL
 import ae.farabi.test.utils.Constants.POPULAR_LIST

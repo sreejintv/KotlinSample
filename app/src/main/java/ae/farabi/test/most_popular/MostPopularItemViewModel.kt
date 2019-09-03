@@ -1,4 +1,4 @@
-package ae.farabi.test
+package ae.farabi.test.most_popular
 
 import ae.farabi.test.model.Content
 import androidx.databinding.ObservableField

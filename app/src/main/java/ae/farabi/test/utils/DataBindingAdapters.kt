@@ -1,4 +1,4 @@
-package ae.farabi.test
+package ae.farabi.test.utils
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter

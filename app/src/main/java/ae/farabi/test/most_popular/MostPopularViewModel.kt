@@ -1,11 +1,11 @@
 package ae.farabi.test.most_popular
 
 import ae.farabi.test.BR
-import ae.farabi.test.MostPopularItemViewModel
 import ae.farabi.test.R
 import ae.farabi.test.model.Content
 import ae.farabi.test.network.APIRepositoryProvider
 import ae.farabi.test.utils.Constants
+import ae.farabi.test.utils.OnNewsItemClickListener
 import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
