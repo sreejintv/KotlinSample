@@ -29,7 +29,7 @@ interface ApiService {
      * Companion object to create the GithubApiService
      */
     companion object Factory {
-        val key = "ZOC6SVIzVHSgt1SWbCZvNwHDvh20yhQY"
+
         fun create(): ApiService {
             val retrofit = Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

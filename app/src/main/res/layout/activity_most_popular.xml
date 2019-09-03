@@ -12,6 +12,7 @@
     </data>
 
     <RelativeLayout
+            android:id="@+id/baseLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -29,7 +30,6 @@
                 android:layout_height="match_parent"
                 android:layout_below="@+id/toolbar"
                 tools:layout="@layout/fragment_most_popular" />
-
 
     </RelativeLayout>
 </layout>

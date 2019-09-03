@@ -5,7 +5,7 @@ import ae.farabi.test.MostPopularItemViewModel
 import ae.farabi.test.R
 import ae.farabi.test.model.Content
 import ae.farabi.test.network.APIRepositoryProvider
-import android.util.Log
+import ae.farabi.test.utils.Constants
 import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -32,8 +32,8 @@ class MostPopularViewModel : ViewModel(), OnNewsItemClickListener {
     val errorOnLoading = MutableLiveData<String>()
     val showLoading = MutableLiveData<Boolean>()
 
-    var items = ObservableArrayList<MostPopularItemViewModel>()
 
+    var items = ObservableArrayList<MostPopularItemViewModel>()
 
     val mostpopularBinding = ItemBinding.of<MostPopularItemViewModel> { itemBinding, _, item ->
         itemBinding.set(BR.viewModel, R.layout.news_item).bindExtra(BR.listener, this)
@@ -54,18 +54,17 @@ class MostPopularViewModel : ViewModel(), OnNewsItemClickListener {
             .subscribe({ result ->
 
                 showLoading.value = false
-                Log.d("Result", "There are ${result} Java developers in Lagos")
-                if (result.status.equals("OK")) {
+                if (result.status.equals(Constants.OK)) {
                     result.results.forEach {
                         val data = MostPopularItemViewModel()
                         data.data = it
                         items.add(data)
                     }
                 } else {
-
+                    errorOnLoading.value = Constants.ERROR_MSG
                 }
             }, { error ->
-
+                errorOnLoading.value = Constants.ERROR_MSG
                 error.printStackTrace()
 
             })
@@ -73,3 +72,5 @@ class MostPopularViewModel : ViewModel(), OnNewsItemClickListener {
 
 
 }
+
+

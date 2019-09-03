@@ -25,6 +25,7 @@ import androidx.lifecycle.ViewModelProviders
  */
 class MostPopularFragment : Fragment() {
 
+    var viewModel : MostPopularViewModel? = null
     companion object {
         fun newInstance() = MostPopularFragment()
     }
@@ -33,7 +34,7 @@ class MostPopularFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val viewModel = ViewModelProviders.of(this).get(MostPopularViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(MostPopularViewModel::class.java)
         val binding: FragmentMostPopularBinding = DataBindingUtil.inflate(
             inflater, fragment_most_popular, container, false
         )
@@ -41,24 +42,35 @@ class MostPopularFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.setVariable(BR.viewModel, viewModel)
         binding.executePendingBindings()
+        viewModel?.gotoDetails?.value = null
+        viewModel?.let {
+            it.gotoDetails.observe(this, Observer {news->
+                news?.let {
+                    (activity as MostPopularActivity).gotoDetailsFragment(news)
+                }
 
-        viewModel.gotoDetails.observe(this, Observer {
-            (activity as MostPopularActivity).gotoDetailsFragment(it)
-        })
+            })
 
-        viewModel.errorOnLoading.observe(this, Observer {
-            Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
-        })
+            it.errorOnLoading.observe(this, Observer {
+                Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
+            })
 
-        viewModel.showLoading.observe(this, Observer {
-            if (it) {
-                (activity as MostPopularActivity).showProgress()
-            } else {
-                (activity as MostPopularActivity).hideProgress()
-            }
-        })
-
+            it.showLoading.observe(this, Observer {showLoading->
+                if (showLoading) {
+                    (activity as MostPopularActivity).showProgress()
+                } else {
+                    (activity as MostPopularActivity).hideProgress()
+                }
+            })
+        }
         return view
+
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModel?.gotoDetails?.removeObservers(this)
+        viewModel?.showLoading?.removeObservers(this)
+        viewModel?.errorOnLoading?.removeObservers(this)
+    }
 }

@@ -1,6 +1,7 @@
 package ae.farabi.test.network
 
 import ae.farabi.test.model.ResponseModel
+import ae.farabi.test.utils.Constants.API_KEY
 import io.reactivex.Observable
 
 /**
@@ -15,7 +16,7 @@ import io.reactivex.Observable
 class APIRepository(val apiService: ApiService) {
 
         fun loadMostPopular(): Observable<ResponseModel> {
-            return apiService.mostPopular(apiKey = "ZOC6SVIzVHSgt1SWbCZvNwHDvh20yhQY")
+            return apiService.mostPopular(apiKey = API_KEY)
         }
 
 }
